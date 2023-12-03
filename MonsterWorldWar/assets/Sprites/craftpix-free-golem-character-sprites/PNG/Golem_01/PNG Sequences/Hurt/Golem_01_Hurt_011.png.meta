@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "ce17e6ae-feba-482a-918c-1d94263961d3",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 720,
+  "height": 480,
+  "platformSettings": {},
+  "subMetas": {
+    "Golem_01_Hurt_011": {
+      "ver": "1.0.6",
+      "uuid": "dbcee1ab-5f44-4f86-9fcd-a9b16ebba95f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "ce17e6ae-feba-482a-918c-1d94263961d3",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 66,
+      "offsetY": -32.5,
+      "trimX": 210,
+      "trimY": 95,
+      "width": 432,
+      "height": 355,
+      "rawWidth": 720,
+      "rawHeight": 480,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

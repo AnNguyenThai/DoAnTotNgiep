@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "f42edbfc-a9e8-49d0-8603-8da48856997e",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 720,
+  "height": 480,
+  "platformSettings": {},
+  "subMetas": {
+    "Golem_03_Idle Blinking_009": {
+      "ver": "1.0.6",
+      "uuid": "4c5bbb1d-5af8-4a1c-b5f1-4ab29ac478c9",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "f42edbfc-a9e8-49d0-8603-8da48856997e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 66.5,
+      "offsetY": -34,
+      "trimX": 213,
+      "trimY": 98,
+      "width": 427,
+      "height": 352,
+      "rawWidth": 720,
+      "rawHeight": 480,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

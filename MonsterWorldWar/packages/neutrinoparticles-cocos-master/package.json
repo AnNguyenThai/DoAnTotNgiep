@@ -1,0 +1,14 @@
+{
+  "name": "neutrinoparticles",
+  "version": "1.0.0",
+  "description": "NeutrinoParticles integration extension. See https://neutrinoparticles.com/",
+  "author": "Yurii Miroshnyk",
+  "main": "main.js",
+  "runtime-resource": {
+    "path": "runtime",
+    "name": "runtime"
+  },
+  "reload": {
+    "ignore": ["runtime/**/*"]
+  }
+}

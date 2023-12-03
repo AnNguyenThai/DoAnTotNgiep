@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "04a92304-419a-4742-a196-45e4626e6d77",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 720,
+  "height": 480,
+  "platformSettings": {},
+  "subMetas": {
+    "Golem_01_Attacking_006": {
+      "ver": "1.0.6",
+      "uuid": "b8edb168-c127-4d12-a5af-927ade422bf7",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "04a92304-419a-4742-a196-45e4626e6d77",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -13,
+      "offsetY": -4.5,
+      "trimX": 186,
+      "trimY": 39,
+      "width": 322,
+      "height": 411,
+      "rawWidth": 720,
+      "rawHeight": 480,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

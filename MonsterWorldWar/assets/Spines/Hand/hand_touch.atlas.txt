@@ -1,0 +1,13 @@
+
+hand_touch.png
+size: 96,132
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+hand
+  rotate: false
+  xy: 2, 2
+  size: 89, 128
+  orig: 89, 128
+  offset: 0, 0
+  index: -1

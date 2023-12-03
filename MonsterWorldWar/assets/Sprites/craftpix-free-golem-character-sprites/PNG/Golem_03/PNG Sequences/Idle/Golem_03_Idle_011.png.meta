@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "f965d4be-728e-4c4f-9d33-51c3fe875d1d",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 720,
+  "height": 480,
+  "platformSettings": {},
+  "subMetas": {
+    "Golem_03_Idle_011": {
+      "ver": "1.0.6",
+      "uuid": "6b8f5640-5c53-42b2-bacc-aff22f879958",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "f965d4be-728e-4c4f-9d33-51c3fe875d1d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 69,
+      "offsetY": -35.5,
+      "trimX": 216,
+      "trimY": 101,
+      "width": 426,
+      "height": 349,
+      "rawWidth": 720,
+      "rawHeight": 480,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

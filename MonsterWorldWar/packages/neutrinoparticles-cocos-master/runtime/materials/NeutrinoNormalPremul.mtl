@@ -1,0 +1,15 @@
+{
+  "__type__": "cc.Material",
+  "_name": "NeutrinoNormalPremul",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "b82bca90-c8ad-4317-adeb-80110165e392"
+  },
+  "_techniqueIndex": 1,
+  "_techniqueData": {
+    "0": {
+      "defines": {}
+    }
+  }
+}

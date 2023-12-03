@@ -1,0 +1,310 @@
+'use strict';
+
+// https://stackoverflow.com/questions/5827612/node-js-fs-readdir-recursive-directory-search
+const fs = require('fs');
+const path = require('path');
+
+const walk = function(dir, done) {
+  var results = [];
+  fs.readdir(dir, function(err, list) {
+    if (err) return done(err);
+    var pending = list.length;
+    if (!pending) return done(null, results);
+    list.forEach(function(file) {
+      file = path.resolve(dir, file);
+      fs.stat(file, function(err, stat) {
+        if (stat && stat.isDirectory()) {
+          walk(file, function(err, res) {
+            results = results.concat(res);
+            if (!--pending) done(null, results);
+          });
+        } else {
+          results.push(file);
+          if (!--pending) done(null, results);
+        }
+      });
+    });
+  });
+};
+
+function normalizeSlashes(p) {
+  return p.replace(/\\/g, '/');
+}
+
+let timer = null;
+let lastErrors = [];
+let lastTexturesJSONString = null;
+
+module.exports = {
+  load () {
+    // Create particles, textures and export folders if don't exist.
+    fs.mkdirSync(path.join(Editor.Project.path, 'particles'), { recursive: true });
+
+    const npDir = path.join(Editor.Project.path, 'assets/neutrinoparticles');
+
+    const firstInit = !fs.existsSync(npDir);
+
+    fs.mkdirSync(path.join(npDir, 'exported_effects'), { recursive: true });
+    fs.mkdirSync(path.join(npDir, 'components'), { recursive: true });
+    fs.mkdirSync(path.join(npDir, 'textures'), { recursive: true });
+
+    const texturesMetaPath = path.join(npDir, 'textures.meta');
+    if (!fs.existsSync(texturesMetaPath)) {
+      fs.writeFileSync(texturesMetaPath, JSON.stringify({
+        "ver": "1.1.2",
+        "uuid": "be26bbd0-0deb-4e8d-b10a-5e46a1e97ad1",
+        "isBundle": true,
+        "bundleName": "neutrinoparticles-textures",
+        "priority": 1,
+        "compressionType": {},
+        "optimizeHotUpdate": {},
+        "inlineSpriteFrames": {},
+        "isRemoteBundle": {},
+        "subMetas": {}
+      }));
+    }
+
+    const texturesListPath = path.join(npDir, 'textures.ts');
+    if (!fs.existsSync(texturesListPath)) {
+      fs.writeFileSync(texturesListPath, 'export default [];\n');
+    }
+
+    if (firstInit) {
+      const texturesAtlasPath = path.join(npDir, 'textures/textures.pac');
+      if (!fs.existsSync(texturesAtlasPath)) {
+        fs.writeFileSync(texturesAtlasPath, JSON.stringify({
+          "__type__": "cc.SpriteAtlas"
+        }));
+      }
+
+      const texturesAtlasMetaPath = path.join(npDir, 'textures/textures.pac.meta');
+      if (!fs.existsSync(texturesAtlasMetaPath)) {
+        fs.writeFileSync(texturesAtlasMetaPath, JSON.stringify({
+          "ver": "1.2.1",
+          "uuid": "a0b2248f-8fdf-4295-889a-38f2012cf28d",
+          "maxWidth": 1024,
+          "maxHeight": 1024,
+          "padding": 2,
+          "allowRotation": false,
+          "forceSquared": false,
+          "powerOfTwo": false,
+          "algorithm": "MaxRects",
+          "format": "png",
+          "quality": 80,
+          "contourBleed": true,
+          "paddingBleed": true,
+          "filterUnused": false,
+          "packable": false,
+          "premultiplyAlpha": false,
+          "filterMode": "bilinear",
+          "platformSettings": {},
+          "subMetas": {}
+        }));
+      }
+    }
+    
+    timer = setInterval(() => {
+      this._scanExportedEffects();
+      this._scanTextures();
+    }, 2000);
+  },
+
+  unload () {
+    clearInterval(timer);
+  },
+
+  // register your ipc messages here
+  messages: {
+  },
+
+  _updateEffectsList(exportedFiles, componentsFiles) {
+    const basePath = Editor.assetdb.urlToFspath('db://assets/neutrinoparticles');
+
+    let needsRefresh = false;
+
+    exportedFiles.forEach(function (exportRelPath) {
+      if (path.extname(exportRelPath) !== '.js') {
+        return;
+      }
+
+      const exportFileRelToExportedEffects = normalizeSlashes(
+        path.relative('exported_effects', exportRelPath));
+      const parsedFile = path.parse(exportFileRelToExportedEffects);
+  
+      const componentRelPath = normalizeSlashes(path.join('components', 
+        parsedFile.dir, 'NeutrinoEffect_' + parsedFile.name + '.ts'));
+      const componentPath = normalizeSlashes(path.join(basePath, componentRelPath));
+
+      const componentIndex = componentsFiles.findIndex(el => el === componentRelPath);
+      if (componentIndex >= 0) {
+        componentsFiles.splice(componentIndex, 1);
+
+      }
+
+      if (!fs.existsSync(componentPath)) {
+        const componentDir = path.parse(componentPath).dir;
+
+        const exportFileRelToComponentPath = normalizeSlashes(path.relative(componentDir, 
+          path.join(basePath, exportRelPath)));
+
+        const texturesFileRelToComponentPath = normalizeSlashes(path.relative(componentDir, 
+          path.join(basePath, 'textures')));
+  
+        const menuItem = exportFileRelToExportedEffects.slice(0, -3);
+        let src = `// !!! This file is generated by NeutrinoParticles extension package.\n`;
+        src += `// !!! Don't modify it manually.\n\n`;
+        src += `import * as NeutrinoEffect from '${exportFileRelToComponentPath}';\n`;
+        src += `import textures from '${texturesFileRelToComponentPath}';\n`
+        src += `import NeutrinoComponent from 'NeutrinoComponent';\n`;
+        src += `import NeutrinoAssembler from 'NeutrinoAssembler';\n\n`;
+        src += `const {ccclass, executeInEditMode, playOnFocus, menu} = cc._decorator;\n\n`;
+        src += `@ccclass\n`;
+        src += `@executeInEditMode\n`;
+        src += `@playOnFocus\n`;
+        src += `@menu('i18n:MAIN_MENU.component.renderers/NeutrinoComponent/${menuItem}')\n`;
+        src += `export default class NeutrinoEffectComponent extends NeutrinoComponent {\n`;
+        src += `\tgetEffectClass() { return NeutrinoEffect; }\n`;
+        src += `\tgetTexturesDatabase() { return textures; }\n`;
+        src += `}\n\n`;
+        src += `cc.Assembler.register(NeutrinoEffectComponent, NeutrinoAssembler);\n`;
+
+        const componentDirPath = path.dirname(componentPath);
+        if (!fs.existsSync(componentDirPath)) {
+          fs.mkdirSync(componentDirPath, { recursive: true });
+        }
+
+        fs.writeFile(componentPath, src, (err) => {
+          const relativePath = path.relative(Editor.Project.path, componentPath);
+          if (err) {
+            Editor.error(`NeutrinoParticles: can't write to file '${relativePath}'. ${err}`);
+          } else {
+            Editor.success(`NeutrinoParticles: generated effect component ${relativePath}.`);
+            needsRefresh = true;
+          }
+        });
+      }
+    });
+
+    componentsFiles.forEach((file) => {
+      if (path.extname(file) !== '.ts') {
+        return;
+      }
+      fs.unlinkSync(path.join(basePath, file));
+      fs.unlinkSync(path.join(basePath, file + '.meta'));
+      Editor.success(`NeutrinoParticles: removed obsolete effect component '${file}'`);
+      needsRefresh = true;
+    });
+
+    if (needsRefresh) {
+      Editor.assetdb.refresh('db://assets/neutrinoparticles');
+    }
+  },
+
+  _updateTexturesList(textures) {
+    textures.sort();
+
+    const basePath = Editor.assetdb.urlToFspath('db://assets/neutrinoparticles');
+    const baseTexturesPath = path.join(basePath, 'textures');
+    const texturesDescs = [];
+
+    textures.forEach((texture) => {
+      const ext = path.extname(texture);
+      if (ext === '.meta') {
+        return;
+      }
+
+      let uuid = Editor.assetdb.fspathToUuid(texture);
+      if (!uuid) {
+        return;
+      }
+
+      if (Editor.assetdb.containsSubAssetsByUuid(uuid)) {
+        const subInfo = Editor.assetdb.subAssetInfosByUuid(uuid)[0];
+        uuid = subInfo.uuid;
+
+        const meta = Editor.assetdb.loadMetaByUuid(uuid);
+        if (meta.trimType !== undefined && meta.trimType !== 'none') {
+          Editor.assetdb.saveMeta(uuid, `{ "trimType": "none", "uuid": "${uuid}"}`);
+        }
+      }
+
+      const relativePath = normalizeSlashes(path.relative(baseTexturesPath, texture));
+      const relativePathNoExt = relativePath.slice(0, -ext.length);
+      texturesDescs.push({ uuid, path: relativePathNoExt });
+    });
+
+    const texturesJSONString = JSON.stringify(texturesDescs);
+    const texturesListFilePath = path.join(basePath, 'textures.ts');
+    if (texturesJSONString !== lastTexturesJSONString || !fs.existsSync(texturesListFilePath)) {
+      fs.writeFileSync(texturesListFilePath, 
+        'export default ' + texturesJSONString + ';\n');
+
+      lastTexturesJSONString = texturesJSONString;
+      Editor.assetdb.refresh('db://assets/neutrinoparticles/textures.ts');
+    }
+  },  
+
+  _scanExportedEffects() {
+    const basePath = Editor.assetdb.urlToFspath('db://assets/neutrinoparticles');
+
+    if (typeof basePath !== "string") {
+      return;
+    }
+
+    let errors = lastErrors;
+    lastErrors = [];
+
+    walk(path.join(basePath, 'exported_effects'), (err, exportedFiles) => {
+      if (err) {
+        const errorStr = `${err}`;
+        if (!errors.find(element => element.localeCompare(errorStr) === 0)) {
+          Editor.error(`NeutrinoParticles: Error while scanning exported effects directory. ${errorStr}`);
+        }
+        lastErrors.push(errorStr);
+        return;
+      }
+
+      for (let i = 0; i < exportedFiles.length; ++i) {
+        exportedFiles[i] = normalizeSlashes(path.relative(basePath, exportedFiles[i]));
+      }
+
+      walk(path.join(basePath, 'components'), (err, componentsFiles) => {
+        if (err) {
+          const errorStr = `${err}`;
+          if (!errors.find(element => element.localeCompare(errorStr) === 0)) {
+            Editor.error(`NeutrinoParticles: Error while scanning components directory. ${errorStr}`);
+          }
+          lastErrors.push(errorStr);
+          componentsFiles = [];
+        }
+  
+        for (let i = 0; i < componentsFiles.length; ++i) {
+          componentsFiles[i] = normalizeSlashes(path.relative(basePath, componentsFiles[i]));
+        }
+
+        this._updateEffectsList(exportedFiles, componentsFiles);
+      });
+    });
+  },
+
+  _scanTextures() {
+    const basePath = Editor.assetdb.urlToFspath('db://assets/neutrinoparticles');
+
+    if (typeof basePath !== "string") {
+      return;
+    }
+
+    walk(path.join(basePath, 'textures'), (err, textures) => {
+      if (err) {
+        const errorStr = `${err}`;
+        if (!errors.find(element => element.localeCompare(errorStr) === 0)) {
+          Editor.error(`NeutrinoParticles: Error while scanning textures directory. ${errorStr}`);
+        }
+        lastErrors.push(errorStr);
+        return;
+      }
+
+      this._updateTexturesList(textures);
+    });
+  }
+};

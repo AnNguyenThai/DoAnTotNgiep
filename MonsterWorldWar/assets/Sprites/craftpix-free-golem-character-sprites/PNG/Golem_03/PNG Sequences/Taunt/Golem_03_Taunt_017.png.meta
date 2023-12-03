@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c1978706-16d8-4182-bd73-0bab05452332",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 720,
+  "height": 480,
+  "platformSettings": {},
+  "subMetas": {
+    "Golem_03_Taunt_017": {
+      "ver": "1.0.6",
+      "uuid": "2d63256c-b985-4749-854b-ab6fab2cb01f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c1978706-16d8-4182-bd73-0bab05452332",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 64.5,
+      "offsetY": -34.5,
+      "trimX": 205,
+      "trimY": 98,
+      "width": 439,
+      "height": 353,
+      "rawWidth": 720,
+      "rawHeight": 480,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

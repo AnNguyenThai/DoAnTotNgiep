@@ -1,0 +1,1 @@
+type voidFunc = (a?:any,b?:any,c?:any,d?:any) => void;

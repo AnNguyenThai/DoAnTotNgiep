@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c3a1ab23-6f02-42a0-9874-3977450a2726",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 720,
+  "height": 480,
+  "platformSettings": {},
+  "subMetas": {
+    "Golem_02_Jump Loop_001": {
+      "ver": "1.0.6",
+      "uuid": "be496f5f-07a0-496d-96a4-004d6e5946e8",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c3a1ab23-6f02-42a0-9874-3977450a2726",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 66.5,
+      "offsetY": -21.5,
+      "trimX": 237,
+      "trimY": 79,
+      "width": 379,
+      "height": 365,
+      "rawWidth": 720,
+      "rawHeight": 480,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

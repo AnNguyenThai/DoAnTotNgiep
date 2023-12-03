@@ -1,0 +1,146 @@
+
+character.png
+size: 488,916
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 2
+  rotate: false
+  xy: 2, 452
+  size: 236, 247
+  orig: 236, 247
+  offset: 0, 0
+  index: -1
+Layer 3
+  rotate: false
+  xy: 2, 701
+  size: 467, 213
+  orig: 469, 215
+  offset: 1, 1
+  index: -1
+Layer 4
+  rotate: false
+  xy: 2, 19
+  size: 158, 82
+  orig: 158, 82
+  offset: 0, 0
+  index: -1
+Layer 5
+  rotate: false
+  xy: 119, 141
+  size: 106, 88
+  orig: 106, 88
+  offset: 0, 0
+  index: -1
+Layer 5_2
+  rotate: false
+  xy: 133, 231
+  size: 102, 88
+  orig: 102, 88
+  offset: 0, 0
+  index: -1
+R_foot
+  rotate: false
+  xy: 343, 2
+  size: 124, 46
+  orig: 124, 46
+  offset: 0, 0
+  index: -1
+Shape 1
+  rotate: false
+  xy: 239, 179
+  size: 144, 159
+  orig: 144, 159
+  offset: 0, 0
+  index: -1
+Shape 1 copy
+  rotate: false
+  xy: 2, 103
+  size: 115, 163
+  orig: 115, 163
+  offset: 0, 0
+  index: -1
+Shape 11
+  rotate: false
+  xy: 162, 18
+  size: 179, 69
+  orig: 179, 69
+  offset: 0, 0
+  index: -1
+Shape 12
+  rotate: false
+  xy: 385, 207
+  size: 93, 131
+  orig: 93, 131
+  offset: 0, 0
+  index: -1
+Shape 12 copy
+  rotate: false
+  xy: 133, 321
+  size: 104, 129
+  orig: 104, 129
+  offset: 0, 0
+  index: -1
+Shape 2 copy
+  rotate: false
+  xy: 227, 89
+  size: 147, 88
+  orig: 147, 88
+  offset: 0, 0
+  index: -1
+Shape 5
+  rotate: false
+  xy: 385, 98
+  size: 98, 107
+  orig: 98, 107
+  offset: 0, 0
+  index: -1
+Shape 6
+  rotate: false
+  xy: 403, 443
+  size: 82, 68
+  orig: 82, 68
+  offset: 0, 0
+  index: -1
+Shape 7
+  rotate: false
+  xy: 240, 513
+  size: 167, 186
+  orig: 167, 186
+  offset: 0, 0
+  index: -1
+Shape 8
+  rotate: false
+  xy: 2, 268
+  size: 129, 182
+  orig: 129, 182
+  offset: 0, 0
+  index: -1
+Shape 8 copy
+  rotate: false
+  xy: 240, 340
+  size: 161, 171
+  orig: 161, 171
+  offset: 0, 0
+  index: -1
+Shape 9
+  rotate: false
+  xy: 376, 50
+  size: 109, 46
+  orig: 109, 46
+  offset: 0, 0
+  index: -1
+s9_fx2
+  rotate: false
+  xy: 409, 546
+  size: 70, 76
+  orig: 70, 76
+  offset: 0, 0
+  index: -1
+s9_fx3
+  rotate: false
+  xy: 409, 624
+  size: 75, 75
+  orig: 75, 75
+  offset: 0, 0
+  index: -1

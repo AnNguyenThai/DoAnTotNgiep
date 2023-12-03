@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "8bda5e1e-d43e-4dca-acd1-13c287dce4dc",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 75,
+  "height": 94,
+  "platformSettings": {},
+  "subMetas": {
+    "Shop_Cristal_Icon_01": {
+      "ver": "1.0.6",
+      "uuid": "d8755b15-9132-438d-9a6f-4901e3972984",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "8bda5e1e-d43e-4dca-acd1-13c287dce4dc",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0.5,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 75,
+      "height": 93,
+      "rawWidth": 75,
+      "rawHeight": 94,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

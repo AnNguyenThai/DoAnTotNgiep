@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "e74f4497-e017-4c20-87d4-7fc6d75911db",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 720,
+  "height": 480,
+  "platformSettings": {},
+  "subMetas": {
+    "Golem_01_Dying_009": {
+      "ver": "1.0.6",
+      "uuid": "1e84123a-fbf1-438f-9863-f4a8823d44b4",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "e74f4497-e017-4c20-87d4-7fc6d75911db",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -68.5,
+      "offsetY": -31.5,
+      "trimX": 116,
+      "trimY": 73,
+      "width": 351,
+      "height": 397,
+      "rawWidth": 720,
+      "rawHeight": 480,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

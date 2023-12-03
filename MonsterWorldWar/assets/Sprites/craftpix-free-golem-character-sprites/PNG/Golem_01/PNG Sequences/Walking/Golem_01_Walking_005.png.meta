@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "81bb88b2-94e0-4051-8e8e-7e93ad342225",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 720,
+  "height": 480,
+  "platformSettings": {},
+  "subMetas": {
+    "Golem_01_Walking_005": {
+      "ver": "1.0.6",
+      "uuid": "84f25571-70a4-4fb1-a716-c155f641fbaf",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "81bb88b2-94e0-4051-8e8e-7e93ad342225",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 77.5,
+      "offsetY": -32,
+      "trimX": 245,
+      "trimY": 91,
+      "width": 385,
+      "height": 362,
+      "rawWidth": 720,
+      "rawHeight": 480,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

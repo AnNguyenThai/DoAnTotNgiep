@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "40400307-483b-4d87-a901-76aeba50287b",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 211,
+  "height": 101,
+  "platformSettings": {},
+  "subMetas": {
+    "Price_BTN_Table": {
+      "ver": "1.0.6",
+      "uuid": "73f89325-3cee-4035-ae8a-456cff73d2c0",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "40400307-483b-4d87-a901-76aeba50287b",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 0,
+      "width": 210,
+      "height": 101,
+      "rawWidth": 211,
+      "rawHeight": 101,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
