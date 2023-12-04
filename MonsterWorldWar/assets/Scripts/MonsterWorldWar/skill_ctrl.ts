@@ -57,6 +57,7 @@ export default class SkillCtrl extends cc.Component {
         let wall = Singleton.POOLING_MANAGER.poolGet(TypePool.Wall, this.node.parent, Singleton.GAME_MANAGER_MONSTER.player.node.position.add(cc.v3(200, 120, 0)));
         wall;
     }
+    //Tạo ra tia điện bắn về phía trước
     skillElectronic() {
         if (this.fill1.height != 0 || Singleton.GAME_MANAGER_MONSTER.numscore < 1000) return;
         Singleton.GAME_MANAGER_MONSTER.numscore -= 1000;
@@ -93,6 +94,7 @@ export default class SkillCtrl extends cc.Component {
             .start();
 
     }
+    // Tạo ra 3 đường lửa để tiêu diệt quái vật
     skillFire() {
         if (this.fill2.height != 0 || Singleton.GAME_MANAGER_MONSTER.numscore < 5000) return;
         Singleton.GAME_MANAGER_MONSTER.numscore -= 5000;
@@ -119,13 +121,14 @@ export default class SkillCtrl extends cc.Component {
         }, 2);
 
     }
+    // gọi ra các thiên thạch để thả xuống quái vật
     skillMeteorite() {
-        if (this.fill3.height != 0 || Singleton.GAME_MANAGER_MONSTER.numscore < 10000) return;
-        Singleton.GAME_MANAGER_MONSTER.numscore -= 10000;
+        if (this.fill3.height != 0 || Singleton.GAME_MANAGER_MONSTER.numscore < 8000) return;
+        Singleton.GAME_MANAGER_MONSTER.numscore -= 8000;
         Singleton.GAME_MANAGER_MONSTER.score.string = ": " + Singleton.GAME_MANAGER_MONSTER.numscore.toString();
         this.fill3.height = 85;
         cc.tween(this.fill3)
-            .to(20, { height: 0 })
+            .to(10, { height: 0 })
             .call(() => {
                 console.log("done");
 
@@ -254,14 +257,15 @@ export default class SkillCtrl extends cc.Component {
         }, 3)
 
     }
+    // tạo ra tia lazer tiêu diệt quái
     skillLazer() {
-        if (this.fill4.height != 0 || Singleton.GAME_MANAGER_MONSTER.numscore < 30000) return;
-        Singleton.GAME_MANAGER_MONSTER.numscore -= 30000;
+        if (this.fill4.height != 0 || Singleton.GAME_MANAGER_MONSTER.numscore < 10000) return;
+        Singleton.GAME_MANAGER_MONSTER.numscore -= 10000;
         Singleton.GAME_MANAGER_MONSTER.score.string = ": " + Singleton.GAME_MANAGER_MONSTER.numscore.toString();
 
         this.fill4.height = 85;
         cc.tween(this.fill4)
-            .to(30, { height: 0 })
+            .to(15, { height: 0 })
             .call(() => {
 
             })

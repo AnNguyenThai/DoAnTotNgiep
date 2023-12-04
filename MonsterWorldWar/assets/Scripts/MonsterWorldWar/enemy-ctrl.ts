@@ -86,7 +86,7 @@ export default class Enemy extends cc.Component {
         // Khi trúng đạn sẽ trừ máu tag =0,1,2,3,4,5 tương đương vs các loại đạn và số máu quái bị trừ
         if (other.node.group == "Bullet" && other.tag == 0) {
             if (this.hp.width > 10) {
-                this.hp.width -= 40;
+                this.hp.width -= 50;
                 if (this.hp.width < 0) {
                     this.hp.width = 0;
                     this.die();
@@ -98,7 +98,7 @@ export default class Enemy extends cc.Component {
         }
         else if (other.node.group == "Bullet" && other.tag == 1) {
             if (this.hp.width > 10) {
-                this.hp.width -= 80;
+                this.hp.width -= 100;
                 if (this.hp.width < 0) {
                     this.hp.width = 0;
                     this.die();
@@ -110,7 +110,7 @@ export default class Enemy extends cc.Component {
         }
         else if (other.node.group == "Bullet" && other.tag == 2) {
             if (this.hp.width > 10) {
-                this.hp.width -= 120;
+                this.hp.width -= 200;
                 if (this.hp.width < 0) {
                     this.hp.width = 0;
                     this.die();
@@ -122,7 +122,7 @@ export default class Enemy extends cc.Component {
         }
         else if (other.node.group == "Bullet" && other.tag == 3) {
             if (this.hp.width > 10) {
-                this.hp.width -= 200;
+                this.hp.width -= 300;
                 if (this.hp.width < 0) {
                     this.hp.width = 0;
                     this.die();
@@ -134,7 +134,7 @@ export default class Enemy extends cc.Component {
         }
         else if (other.node.group == "Bullet" && other.tag == 4) {
             if (this.hp.width > 10) {
-                this.hp.width -= 300;
+                this.hp.width -= 400;
                 if (this.hp.width < 0) {
                     this.hp.width = 0;
                     this.die();
@@ -183,7 +183,7 @@ export default class Enemy extends cc.Component {
         if (other.node.name == "EDame") {
 
             if (this.hp.width > 10) {
-                this.hp.width -= 80;
+                this.hp.width -= 100;
                 if (this.hp.width < 0) {
                     this.hp.width = 0;
                     this.die();
@@ -196,7 +196,7 @@ export default class Enemy extends cc.Component {
         if (other.node.name == "DameMeteo") {
 
             if (this.hp.width > 10) {
-                this.hp.width -= 400;
+                this.hp.width -= 500;
                 if (this.hp.width < 0) {
                     this.hp.width = 0;
                     this.die();
@@ -209,7 +209,7 @@ export default class Enemy extends cc.Component {
         if (other.node.name == "DameLazer") {
 
             if (this.hp.width > 10) {
-                this.hp.width -= 600;
+                this.hp.width -= 800;
                 if (this.hp.width < 0) {
                     this.hp.width = 0;
                     this.die();
@@ -225,16 +225,16 @@ export default class Enemy extends cc.Component {
         Singleton.AUDIO_MANAGER.playEffect(TypeAudio.Hurt);
         // tính số điểm khi diệt quái nhận được
         if (this.typeEnemy == TypeE.E1) {
-            Singleton.GAME_MANAGER_MONSTER.numscore += 500;
-        }
-        else if (this.typeEnemy == TypeE.E2) {
             Singleton.GAME_MANAGER_MONSTER.numscore += 1000;
         }
+        else if (this.typeEnemy == TypeE.E2) {
+            Singleton.GAME_MANAGER_MONSTER.numscore += 2000;
+        }
         else if (this.typeEnemy == TypeE.E3) {
-            Singleton.GAME_MANAGER_MONSTER.numscore += 1500;
+            Singleton.GAME_MANAGER_MONSTER.numscore += 3000;
         }
         else if (this.typeEnemy == TypeE.E4) {
-            Singleton.GAME_MANAGER_MONSTER.numscore += 2000;
+            Singleton.GAME_MANAGER_MONSTER.numscore += 5000;
         }
         else if (this.typeEnemy == TypeE.Boss) {
             Singleton.GAME_MANAGER_MONSTER.numscore += 1000000;
@@ -273,8 +273,7 @@ export default class Enemy extends cc.Component {
 
             }
             Singleton.LEVEL_MANAGER.numBotall -= 1;
-            console.log(Singleton.LEVEL_MANAGER.numBotall
-            );
+            // console.log(Singleton.LEVEL_MANAGER.numBotall);
 
             if (Singleton.LEVEL_MANAGER.numBotall == 0) {
                 Singleton.LEVEL_MANAGER.winGame();

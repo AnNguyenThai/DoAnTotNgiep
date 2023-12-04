@@ -27,6 +27,7 @@ export default class TelePlayer extends cc.Component {
         this.listBtnTele[2].on(cc.Node.EventType.TOUCH_START, this.Tele3, this);
 
     }
+    // Dịch chuyển nhân vật đến hàng 1
     Tele1() {
         let ef = Singleton.POOLING_MANAGER.poolGet(TypePool.PlayerTele, this.listTele[0].parent, this.listTele[0].position);
         // ef.opacity = 255;
@@ -48,6 +49,8 @@ export default class TelePlayer extends cc.Component {
             this.listBtnTele[2].active = true;
         }, 100);
     }
+
+    // Dịch chuyển nhân vật đến hàng 2
     Tele2() {
 
         let ef = Singleton.POOLING_MANAGER.poolGet(TypePool.PlayerTele, this.listTele[1].parent, this.listTele[1].position);
@@ -70,6 +73,8 @@ export default class TelePlayer extends cc.Component {
             this.listBtnTele[2].active = true;
         }, 100);
     }
+
+    // Dịch chuyển nhân vật đến hàng 3
     Tele3() {
         let ef = Singleton.POOLING_MANAGER.poolGet(TypePool.PlayerTele, this.listTele[2].parent, this.listTele[2].position);
         // ef.opacity=255;

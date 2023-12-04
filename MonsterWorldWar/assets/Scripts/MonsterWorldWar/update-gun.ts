@@ -28,6 +28,7 @@ export default class UpdateGun extends cc.Component {
         this.btnClose.on(cc.Node.EventType.TOUCH_START, this.closePop, this);
 
     }
+    // nâg cấp cho súng đạn
     updateGun() {
         if (Singleton.GAME_MANAGER_MONSTER.numscore < this.giatienStart) return;
         let ef = cc.instantiate(this.efUpdate);
@@ -38,7 +39,8 @@ export default class UpdateGun extends cc.Component {
         Singleton.GAME_MANAGER_MONSTER.changeBulletLv(this.numDot);
         Singleton.GAME_MANAGER_MONSTER.numscore -= this.giatienStart;
         Singleton.GAME_MANAGER_MONSTER.score.string = ": " + Singleton.GAME_MANAGER_MONSTER.numscore.toString();
-        this.giatienStart += 5000 * this.numDot * 2;
+        // Tăng giá tiền mỗi lần nâng cấo
+        this.giatienStart += 2000 * this.numDot * 2;
         this.giatienTxt.string = this.giatienStart.toString();
         if (this.numDot == 5) {
             this.btnUpdate.active = false;
