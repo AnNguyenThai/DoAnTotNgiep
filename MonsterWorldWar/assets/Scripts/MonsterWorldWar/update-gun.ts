@@ -23,6 +23,9 @@ export default class UpdateGun extends cc.Component {
     sung2: cc.Node = null;
     @property(cc.Node)
     btnClose: cc.Node = null;
+
+    dataScore = JSON.parse(localStorage.getItem("Score"));
+
     onLoad() {
         this.btnUpdate.on(cc.Node.EventType.TOUCH_START, this.updateGun, this);
         this.btnClose.on(cc.Node.EventType.TOUCH_START, this.closePop, this);
@@ -30,15 +33,17 @@ export default class UpdateGun extends cc.Component {
     }
     // nâg cấp cho súng đạn
     updateGun() {
-        if (Singleton.GAME_MANAGER_MONSTER.numscore < this.giatienStart) return;
+        if (this.dataScore.score < this.giatienStart) return;
         let ef = cc.instantiate(this.efUpdate);
         ef.setParent(this.gun);
         ef.setPosition(cc.v3(0, 0, 0));
         this.listDotUpdate[this.numDot].active = true;
         this.numDot += 1;
         Singleton.GAME_MANAGER_MONSTER.changeBulletLv(this.numDot);
-        Singleton.GAME_MANAGER_MONSTER.numscore -= this.giatienStart;
-        Singleton.GAME_MANAGER_MONSTER.score.string = ": " + Singleton.GAME_MANAGER_MONSTER.numscore.toString();
+        // Singleton.GAME_MANAGER_MONSTER.numscore -= this.giatienStart;
+        this.dataScore.score -= this.giatienStart;
+        localStorage.setItem("Score", JSON.stringify(this.dataScore));
+        Singleton.GAME_MANAGER_MONSTER.score.string = ": " + this.dataScore.score .toString();
         // Tăng giá tiền mỗi lần nâng cấo
         this.giatienStart += 2000 * this.numDot * 2;
         this.giatienTxt.string = this.giatienStart.toString();

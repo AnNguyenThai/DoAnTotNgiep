@@ -41,6 +41,7 @@ export default class SkillCtrl extends cc.Component {
     efMeteoBomb: cc.Prefab = null;
     @property(cc.Node)
     boxSkillFire: cc.Node = null;
+    dataScore = JSON.parse(localStorage.getItem("Score"));
     onLoad() {
         this.electronic.on(cc.Node.EventType.TOUCH_START, this.skillElectronic, this);
         this.fire.on(cc.Node.EventType.TOUCH_START, this.skillFire, this);
@@ -59,9 +60,12 @@ export default class SkillCtrl extends cc.Component {
     }
     //Tạo ra tia điện bắn về phía trước
     skillElectronic() {
-        if (this.fill1.height != 0 || Singleton.GAME_MANAGER_MONSTER.numscore < 1000) return;
-        Singleton.GAME_MANAGER_MONSTER.numscore -= 1000;
-        Singleton.GAME_MANAGER_MONSTER.score.string = ": " + Singleton.GAME_MANAGER_MONSTER.numscore.toString();
+        if (this.fill1.height != 0 || this.dataScore.score < 1000) return;
+        // Singleton.GAME_MANAGER_MONSTER.numscore -= 1000;
+        this.dataScore.score -= 1000;
+        localStorage.setItem("Score", JSON.stringify(this.dataScore));
+
+        Singleton.GAME_MANAGER_MONSTER.score.string = ": " + this.dataScore.score.toString();
         this.fill1.height = 85;
         cc.tween(this.fill1)
             .to(3, { height: 0 })
@@ -96,9 +100,11 @@ export default class SkillCtrl extends cc.Component {
     }
     // Tạo ra 3 đường lửa để tiêu diệt quái vật
     skillFire() {
-        if (this.fill2.height != 0 || Singleton.GAME_MANAGER_MONSTER.numscore < 5000) return;
-        Singleton.GAME_MANAGER_MONSTER.numscore -= 5000;
-        Singleton.GAME_MANAGER_MONSTER.score.string = ": " + Singleton.GAME_MANAGER_MONSTER.numscore.toString();
+        if (this.fill2.height != 0 || this.dataScore.score  < 5000) return;
+        // Singleton.GAME_MANAGER_MONSTER.numscore -= 5000;
+        this.dataScore.score -= 5000;
+        localStorage.setItem("Score", JSON.stringify(this.dataScore));
+        Singleton.GAME_MANAGER_MONSTER.score.string = ": " + this.dataScore.score .toString();
         this.boxSkillFire.active = true;
         this.fill2.height = 85;
         cc.tween(this.fill2)
@@ -123,9 +129,11 @@ export default class SkillCtrl extends cc.Component {
     }
     // gọi ra các thiên thạch để thả xuống quái vật
     skillMeteorite() {
-        if (this.fill3.height != 0 || Singleton.GAME_MANAGER_MONSTER.numscore < 8000) return;
-        Singleton.GAME_MANAGER_MONSTER.numscore -= 8000;
-        Singleton.GAME_MANAGER_MONSTER.score.string = ": " + Singleton.GAME_MANAGER_MONSTER.numscore.toString();
+        if (this.fill3.height != 0 || this.dataScore.score  < 8000) return;
+        // Singleton.GAME_MANAGER_MONSTER.numscore -= 8000;
+        this.dataScore.score -= 8000;
+        localStorage.setItem("Score", JSON.stringify(this.dataScore));
+        Singleton.GAME_MANAGER_MONSTER.score.string = ": " + this.dataScore.score.toString();
         this.fill3.height = 85;
         cc.tween(this.fill3)
             .to(10, { height: 0 })
@@ -259,9 +267,11 @@ export default class SkillCtrl extends cc.Component {
     }
     // tạo ra tia lazer tiêu diệt quái
     skillLazer() {
-        if (this.fill4.height != 0 || Singleton.GAME_MANAGER_MONSTER.numscore < 10000) return;
-        Singleton.GAME_MANAGER_MONSTER.numscore -= 10000;
-        Singleton.GAME_MANAGER_MONSTER.score.string = ": " + Singleton.GAME_MANAGER_MONSTER.numscore.toString();
+        if (this.fill4.height != 0 || this.dataScore.score < 10000) return;
+        // Singleton.GAME_MANAGER_MONSTER.numscore -= 10000;
+        this.dataScore.score -= 10000;
+        localStorage.setItem("Score", JSON.stringify(this.dataScore));
+        Singleton.GAME_MANAGER_MONSTER.score.string = ": " + this.dataScore.score.toString();
 
         this.fill4.height = 85;
         cc.tween(this.fill4)

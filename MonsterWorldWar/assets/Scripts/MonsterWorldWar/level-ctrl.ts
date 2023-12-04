@@ -37,7 +37,7 @@ export default class LevelCtrl extends cc.Component {
     @property()
     numBotall = 100;
     isEnd = false;
-
+    dataLV = JSON.parse(localStorage.getItem("Level"));
     onLoad() {
 
         // if (Singleton.LEVEL_MANAGER) {
@@ -54,11 +54,11 @@ export default class LevelCtrl extends cc.Component {
         Singleton.AUDIO_MANAGER.playEffect(TypeAudio.win);
         Singleton.GAME_MANAGER_MONSTER.canMove = false;
         Singleton.GAME_MANAGER_MONSTER.player.animJump();
+        this.dataLV.curentLV+=1;
+        localStorage.setItem("Level",JSON.stringify(this.dataLV));
         this.scheduleOnce(() => {
             Singleton.GAME_MANAGER_MONSTER.isPause = true;
-
-            Singleton.GAME_DATA.currentLevel += 1;
-            Singleton.LOADSCENES.loadLv("menu");
+                cc.director.loadScene("menu");
         }, 2);
     }
     loseGame() {

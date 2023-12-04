@@ -1,6 +1,5 @@
 import Singleton from "../Manager/a-singleton";
 import AudioManager, { TypeAudio } from "../Manager/audio-manager";
-import Global from "../Manager/global";
 import { TypePool } from "../Manager/pooling-manager";
 
 export enum TypeE {
@@ -220,26 +219,43 @@ export default class Enemy extends cc.Component {
             }
         }
     }
+
+    dataScore = JSON.parse(localStorage.getItem("Score"));
     die() {
         if (this.isDie) return;
         Singleton.AUDIO_MANAGER.playEffect(TypeAudio.Hurt);
         // tính số điểm khi diệt quái nhận được
         if (this.typeEnemy == TypeE.E1) {
-            Singleton.GAME_MANAGER_MONSTER.numscore += 1000;
+            // Singleton.GAME_MANAGER_MONSTER.numscore += 1000;
+            this.dataScore.score += 1000;
+            localStorage.setItem("Score", JSON.stringify(this.dataScore));
+
         }
         else if (this.typeEnemy == TypeE.E2) {
-            Singleton.GAME_MANAGER_MONSTER.numscore += 2000;
+            // Singleton.GAME_MANAGER_MONSTER.numscore += 2000;
+            this.dataScore.score += 2000;
+            localStorage.setItem("Score", JSON.stringify(this.dataScore));
+
         }
         else if (this.typeEnemy == TypeE.E3) {
-            Singleton.GAME_MANAGER_MONSTER.numscore += 3000;
+            // Singleton.GAME_MANAGER_MONSTER.numscore += 3000;
+            this.dataScore.score += 3000;
+            localStorage.setItem("Score", JSON.stringify(this.dataScore));
+
         }
         else if (this.typeEnemy == TypeE.E4) {
-            Singleton.GAME_MANAGER_MONSTER.numscore += 5000;
+            // Singleton.GAME_MANAGER_MONSTER.numscore += 5000;
+            this.dataScore.score += 5000;
+            localStorage.setItem("Score", JSON.stringify(this.dataScore));
+
         }
         else if (this.typeEnemy == TypeE.Boss) {
-            Singleton.GAME_MANAGER_MONSTER.numscore += 1000000;
+            // Singleton.GAME_MANAGER_MONSTER.numscore += 1000000;
+            this.dataScore.score += 1000000;
+            localStorage.setItem("Score", JSON.stringify(this.dataScore));
+
         }
-        Singleton.GAME_MANAGER_MONSTER.score.string = ": " + Singleton.GAME_MANAGER_MONSTER.numscore.toString();
+        Singleton.GAME_MANAGER_MONSTER.score.string = ": " + this.dataScore.score .toString();
 
         this.isDie = true;
         this.animDie();
@@ -279,54 +295,6 @@ export default class Enemy extends cc.Component {
                 Singleton.LEVEL_MANAGER.winGame();
             }
         }, 1);
-
-        // if (Singleton.LEVEL_MANAGER.Lv == "LV1") {
-        //     if (Singleton.LEVEL_MANAGER.numberBot1 == 0) {
-        //         console.log("Win");
-
-        //         this.scheduleOnce(() => {
-        //             Singleton.LEVEL_MANAGER.winGame();
-        //         }, 5)
-        //     }
-        // }
-        // else if (Singleton.LEVEL_MANAGER.Lv == "LV2") {
-        //     if (Singleton.LEVEL_MANAGER.numberBot1 == 0 && Singleton.LEVEL_MANAGER.numberBot2 == 0) {
-        //         this.scheduleOnce(() => {
-        //             Singleton.LEVEL_MANAGER.winGame();
-        //         }, 5)
-        //     }
-        // }
-        // else if (Singleton.LEVEL_MANAGER.Lv == "LV3") {
-        //     if (Singleton.LEVEL_MANAGER.numberBot1 == 0
-        //         && Singleton.LEVEL_MANAGER.numberBot2 == 0
-        //         && Singleton.LEVEL_MANAGER.numberBot3 == 0) {
-        //         this.scheduleOnce(() => {
-        //             Singleton.LEVEL_MANAGER.winGame();
-        //         }, 5)
-        //     }
-        // }
-        // else if (Singleton.LEVEL_MANAGER.Lv == "LV4") {
-        //     if (Singleton.LEVEL_MANAGER.numberBot1 == 0
-        //         && Singleton.LEVEL_MANAGER.numberBot2 == 0
-        //         && Singleton.LEVEL_MANAGER.numberBot3 == 0
-        //         && Singleton.LEVEL_MANAGER.numberBot4 == 0) {
-        //         this.scheduleOnce(() => {
-        //             Singleton.LEVEL_MANAGER.winGame();
-        //         }, 5)
-        //     }
-        // }
-
-        // else if (Singleton.LEVEL_MANAGER.Lv == "LV5") {
-        //     if (Singleton.LEVEL_MANAGER.numberBot1 == 0
-        //         && Singleton.LEVEL_MANAGER.numberBot2 == 0
-        //         && Singleton.LEVEL_MANAGER.numberBot3 == 0
-        //         && Singleton.LEVEL_MANAGER.numberBot4 == 0 &&
-        //         Singleton.LEVEL_MANAGER.numBoss == 0) {
-        //         this.scheduleOnce(() => {
-        //             Singleton.LEVEL_MANAGER.winGame();
-        //         }, 5)
-        //     }
-        // }
 
 
     }

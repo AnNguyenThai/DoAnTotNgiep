@@ -14,37 +14,18 @@ export default class MenuCtrl extends cc.Component {
     @property(cc.Node)
     hand: cc.Node = null;
 
-
+    dataLV = JSON.parse(localStorage.getItem("Level"));
     protected onLoad(): void {
         Singleton.MENU_CTRL = this;
 
     }
     protected start(): void {
         Singleton.AUDIO_MANAGER.playMusic(TypeAudio.BGMmenu);
-        for (let i = 0; i < Singleton.GAME_DATA.currentLevel; i++) {
+        for (let i = 0; i < this.dataLV.curentLV; i++) {
 
             Singleton.AVTIVE_NODE.ativeFalse(this.listLevel[i]);
         }
 
-        // this.listLevel[0].on(cc.Node.EventType.TOUCH_START, (() => {
-
-        // }), this);
-        // this.listLevel[1].on(cc.Node.EventType.TOUCH_START, (() => {
-        //     Singleton.LOADSCENES.LoadScenes("level-2");
-
-        // }), this);
-        // this.listLevel[2].on(cc.Node.EventType.TOUCH_START, (() => {
-        //     Singleton.LOADSCENES.LoadScenes("level-3");
-
-        // }), this);
-        // this.listLevel[3].on(cc.Node.EventType.TOUCH_START, (() => {
-        //     Singleton.LOADSCENES.LoadScenes("level-4");
-
-        // }), this);
-        // this.listLevel[4].on(cc.Node.EventType.TOUCH_START, (() => {
-        //     Singleton.LOADSCENES.LoadScenes("level-5");
-
-        // }), this);
     }
     loadScenes(x: string) {
         switch (x) {

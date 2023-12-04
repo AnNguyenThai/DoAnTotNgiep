@@ -1,6 +1,4 @@
-import APILib, {
-    Network
-} from "../API/apiLib";
+
 import Singleton from "./a-singleton";
 const {
     ccclass,
@@ -59,9 +57,7 @@ export default class AudioManager extends cc.Component {
 
     onLoad() {
         Singleton.AUDIO_MANAGER = this;
-        APILib.APICallChangeVolumn(() => {
-            this.audioVolumeChangeCallback;
-        });
+  
     }
 
     audioVolumeChangeCallback(volume) {
@@ -84,9 +80,7 @@ export default class AudioManager extends cc.Component {
     static enabledAudio() {
         console.log('enable Audio : ' + AudioManager.deviceVolumn);
         AudioManager.isMute = false;
-        AudioManager.deviceVolumn = APILib.APIGetVolumn();
-        if (APILib.APINetwork() == Network.ironsource)
-            AudioManager.deviceVolumn = 0.3;
+
         cc.audioEngine.setMusicVolume(AudioManager.deviceVolumn);
         cc.audioEngine.setEffectsVolume(AudioManager.deviceVolumn);
     }
@@ -94,8 +88,7 @@ export default class AudioManager extends cc.Component {
     // Chi chay 1 music clip trong 1 luc
     // stopMusic de stop nhac dang dung
     playMusic(name: TypeAudio, loop: boolean = true) {
-        if (APILib.APINetwork() == Network.ironsource && !AudioManager.isMute)
-            cc.audioEngine.setMusicVolume(0.3);
+
         this.musics.forEach(music => {
             if (music.clipName == name) {
                 let clip = music.clips[Math.floor(Math.random() * (music.clips.length - 1) + 0.5)];
@@ -113,8 +106,6 @@ export default class AudioManager extends cc.Component {
     lastEffectName = TypeAudio.ButtonClick;
     playEffect(name: TypeAudio, loop: boolean = false, continuous: boolean = false) {
         if (continuous && this.lastEffectName == name) return;
-        if (APILib.APINetwork() == Network.ironsource && !AudioManager.isMute)
-            cc.audioEngine.setEffectsVolume(0.3);
         for (var i = 0; i < this.sounds.length; i++) {
             if (this.sounds[i].clipName == name) {
                 this.lastAudioID = cc.audioEngine.playEffect(this.sounds[i].clips[Math.floor(Math.random() * (this.sounds[i].clips.length - 1) + 0.5)], false);

@@ -41,7 +41,7 @@ export default class GameManagerMonster extends cc.Component {
     score: cc.Label = null;
     @property(cc.Node)
     tutGun: cc.Node = null;
-    numscore = 1000000;
+    // numscore = 1000000;
     canMove = false;
     // Hàm thay đổi loại đạn
     changeBulletLv(x) {
