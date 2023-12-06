@@ -10,6 +10,7 @@ export default class Data extends cc.Component {
 
     protected onLoad(): void {
         this.setData();
+        // this.clearData();
 
     }
     protected start(): void {
@@ -25,13 +26,13 @@ export default class Data extends cc.Component {
     setData() {
         // Tạo data lưu lại điểm đạt được
         const Score = {
-            score: 100000,
+            score: 10000000,
         };
         var jsonScore = localStorage.getItem("Score");
         if (jsonScore == null) {
             console.log("SET DATA SCORE");
             const jsonScore = JSON.stringify(Score);
-            cc.sys.localStorage.setItem("Score", jsonScore);
+            localStorage.setItem("Score", jsonScore);
         }
 
         // Tạo data lưu lại level hiện tại

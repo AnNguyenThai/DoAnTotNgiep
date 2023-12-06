@@ -227,40 +227,45 @@ export default class Enemy extends cc.Component {
         // tính số điểm khi diệt quái nhận được
         if (this.typeEnemy == TypeE.E1) {
             // Singleton.GAME_MANAGER_MONSTER.numscore += 1000;
-            this.dataScore.score += 1000;
+            this.dataScore.score = this.dataScore.score + 1000;
             localStorage.setItem("Score", JSON.stringify(this.dataScore));
+            Singleton.GAME_MANAGER_MONSTER.score.string = ": " + this.dataScore.score.toString();
 
         }
         else if (this.typeEnemy == TypeE.E2) {
             // Singleton.GAME_MANAGER_MONSTER.numscore += 2000;
-            this.dataScore.score += 2000;
+            this.dataScore.score = this.dataScore.score + 2000;
+            Singleton.GAME_MANAGER_MONSTER.score.string = ": " + this.dataScore.score.toString();
             localStorage.setItem("Score", JSON.stringify(this.dataScore));
 
         }
         else if (this.typeEnemy == TypeE.E3) {
             // Singleton.GAME_MANAGER_MONSTER.numscore += 3000;
-            this.dataScore.score += 3000;
+            this.dataScore.score = this.dataScore.score + 3000;
             localStorage.setItem("Score", JSON.stringify(this.dataScore));
+            Singleton.GAME_MANAGER_MONSTER.score.string = ": " + this.dataScore.score.toString();
 
         }
         else if (this.typeEnemy == TypeE.E4) {
             // Singleton.GAME_MANAGER_MONSTER.numscore += 5000;
-            this.dataScore.score += 5000;
+            this.dataScore.score = this.dataScore.score + 5000;
             localStorage.setItem("Score", JSON.stringify(this.dataScore));
+            Singleton.GAME_MANAGER_MONSTER.score.string = ": " + this.dataScore.score.toString();
 
         }
         else if (this.typeEnemy == TypeE.Boss) {
             // Singleton.GAME_MANAGER_MONSTER.numscore += 1000000;
-            this.dataScore.score += 1000000;
+            this.dataScore.score = this.dataScore.score + 100000;
             localStorage.setItem("Score", JSON.stringify(this.dataScore));
+            Singleton.GAME_MANAGER_MONSTER.score.string = ": " + this.dataScore.score.toString();
 
         }
-        Singleton.GAME_MANAGER_MONSTER.score.string = ": " + this.dataScore.score .toString();
 
         this.isDie = true;
         this.animDie();
         this.physicBox.enabled = false;
         this.scheduleOnce(() => {
+
             this.isDie = false;
             // quái chết sẽ đưa vào pool để tái sử dụng
             this.physicBox.enabled = true;

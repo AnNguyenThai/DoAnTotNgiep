@@ -17,12 +17,13 @@ export default class MenuCtrl extends cc.Component {
     dataLV = JSON.parse(localStorage.getItem("Level"));
     protected onLoad(): void {
         Singleton.MENU_CTRL = this;
-
+        this.dataLV.curentLV = 5;
     }
     protected start(): void {
+        console.log(this.dataLV.curentLV);
+
         Singleton.AUDIO_MANAGER.playMusic(TypeAudio.BGMmenu);
         for (let i = 0; i < this.dataLV.curentLV; i++) {
-
             Singleton.AVTIVE_NODE.ativeFalse(this.listLevel[i]);
         }
 

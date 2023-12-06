@@ -17,10 +17,10 @@
         "__id__": 2
       },
       {
-        "__id__": 172
+        "__id__": 173
       },
       {
-        "__id__": 174
+        "__id__": 175
       }
     ],
     "_active": true,
@@ -81,16 +81,16 @@
         "__id__": 5
       },
       {
-        "__id__": 168
+        "__id__": 169
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 170
+        "__id__": 171
       },
       {
-        "__id__": 171
+        "__id__": 172
       }
     ],
     "_prefab": null,
@@ -291,10 +291,13 @@
       },
       {
         "__id__": 166
+      },
+      {
+        "__id__": 167
       }
     ],
     "_prefab": {
-      "__id__": 167
+      "__id__": 168
     },
     "_opacity": 255,
     "_color": {
@@ -5875,6 +5878,16 @@
     "_id": "ffU/+QT39PW5U2VLmXgqi2"
   },
   {
+    "__type__": "ec06c9iGZJLIIQ8SHtvxxOL",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 5
+    },
+    "_enabled": true,
+    "_id": "521OzPHrlKSYgsaiCmigHZ"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 5
@@ -5896,7 +5909,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 169
+        "__id__": 170
       }
     ],
     "_prefab": null,
@@ -5952,7 +5965,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 168
+      "__id__": 169
     },
     "_enabled": true,
     "_id": "08Wgdat95AmKSk7Q4zi2Qw"
@@ -6012,7 +6025,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 173
+        "__id__": 174
       }
     ],
     "_prefab": null,
@@ -6068,7 +6081,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 172
+      "__id__": 173
     },
     "_enabled": true,
     "_id": "a7lOdDHk9BLpfuy5N900ep"
@@ -6082,13 +6095,13 @@
     },
     "_children": [
       {
-        "__id__": 175
+        "__id__": 176
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 189
+        "__id__": 190
       }
     ],
     "_prefab": null,
@@ -6144,13 +6157,13 @@
     "_name": "AudioManager",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 174
+      "__id__": 175
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 176
+        "__id__": 177
       }
     ],
     "_prefab": null,
@@ -6206,21 +6219,18 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 175
+      "__id__": 176
     },
     "_enabled": true,
     "musics": [
       {
-        "__id__": 177
+        "__id__": 178
       },
       {
-        "__id__": 178
+        "__id__": 179
       }
     ],
     "sounds": [
-      {
-        "__id__": 179
-      },
       {
         "__id__": 180
       },
@@ -6247,6 +6257,9 @@
       },
       {
         "__id__": 188
+      },
+      {
+        "__id__": 189
       }
     ],
     "_id": "a73o02YXhBh4hU26kmp2M8"
@@ -6370,7 +6383,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 174
+      "__id__": 175
     },
     "_enabled": true,
     "_id": "abaeIZxFhPDa0NqEF9YZKZ"

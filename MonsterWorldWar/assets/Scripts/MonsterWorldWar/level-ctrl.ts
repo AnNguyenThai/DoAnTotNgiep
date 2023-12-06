@@ -54,11 +54,11 @@ export default class LevelCtrl extends cc.Component {
         Singleton.AUDIO_MANAGER.playEffect(TypeAudio.win);
         Singleton.GAME_MANAGER_MONSTER.canMove = false;
         Singleton.GAME_MANAGER_MONSTER.player.animJump();
-        this.dataLV.curentLV+=1;
-        localStorage.setItem("Level",JSON.stringify(this.dataLV));
+        this.dataLV.curentLV += 1;
+        localStorage.setItem("Level", JSON.stringify(this.dataLV));
         this.scheduleOnce(() => {
             Singleton.GAME_MANAGER_MONSTER.isPause = true;
-                cc.director.loadScene("menu");
+            cc.director.loadScene("menu");
         }, 2);
     }
     loseGame() {
@@ -117,6 +117,52 @@ export default class LevelCtrl extends cc.Component {
                 Singleton.POOLING_MANAGER.poolGet(TypePool.Enemy1, this.parentE, this.posE3.position);
 
             }
+
+
+            this.scheduleOnce(() => {
+                if (!this.isBot2) {
+
+                    this.isBot2 = true
+                }
+            }, 3);
+            if (this.numberBot2 > 0 && this.isBot2) {
+                this.numberBot2 -= 1;
+                let posrandom = Math.round(Math.random() * 2);
+                if (posrandom == 0) {
+                    Singleton.POOLING_MANAGER.poolGet(TypePool.Enemy2, this.parentE, this.posE1.position);
+                }
+                else if (posrandom == 1) {
+                    Singleton.POOLING_MANAGER.poolGet(TypePool.Enemy2, this.parentE, this.posE2.position);
+                }
+                else {
+                    Singleton.POOLING_MANAGER.poolGet(TypePool.Enemy2, this.parentE, this.posE3.position);
+
+                }
+
+            }
+
+            this.scheduleOnce(() => {
+                if (!this.isBot3) {
+
+                    this.isBot3 = true
+                }
+            }, 7);
+            if (this.numberBot3 > 0 && this.isBot3) {
+                this.numberBot3 -= 1;
+                let posrandom = Math.round(Math.random() * 2);
+                if (posrandom == 0) {
+                    Singleton.POOLING_MANAGER.poolGet(TypePool.Enemy3, this.parentE, this.posE1.position);
+                }
+                else if (posrandom == 1) {
+                    Singleton.POOLING_MANAGER.poolGet(TypePool.Enemy3, this.parentE, this.posE2.position);
+                }
+                else {
+                    Singleton.POOLING_MANAGER.poolGet(TypePool.Enemy3, this.parentE, this.posE3.position);
+
+                }
+
+            }
+
             var timeRandom = Math.random() * 2 + 1;
             this.scheduleOnce(() => {
                 if (this.numberBot1 > 0) {
@@ -153,7 +199,7 @@ export default class LevelCtrl extends cc.Component {
 
                 this.isBot2 = true
             }
-        }, 10);
+        }, 5);
         if (this.numberBot2 > 0 && this.isBot2) {
             this.numberBot2 -= 1;
             let posrandom = Math.round(Math.random() * 2);
@@ -170,21 +216,21 @@ export default class LevelCtrl extends cc.Component {
 
         }
         if (this.Lv == "LV2") {
-            let timeRandom = Math.random() * 3 + 2;
+            let timeRandom = Math.random() * 2 ;
             this.scheduleOnce(() => {
                 if (Singleton.GAME_MANAGER_MONSTER.isPause) return;
                 this.spawnBot();
             }, timeRandom);
         }
         //level2 dung o day
-        if (this.Lv == "LV2") return;
+        // if (this.Lv == "LV2") return;
         //level 3
         this.scheduleOnce(() => {
             if (!this.isBot3) {
 
                 this.isBot3 = true
             }
-        }, 20);
+        }, 10);
         if (this.numberBot3 > 0 && this.isBot3) {
             this.numberBot3 -= 1;
             let posrandom = Math.round(Math.random() * 2);
@@ -208,14 +254,14 @@ export default class LevelCtrl extends cc.Component {
             }, timeRandom);
         }
         //level3 dung o day
-        if (this.Lv == "LV3") return;
+        // if (this.Lv == "LV3") return;
         //level 4
         this.scheduleOnce(() => {
             if (!this.isBot4) {
 
                 this.isBot4 = true
             }
-        }, 40);
+        }, 15);
         if (this.numberBot4 > 0 && this.isBot4) {
             this.numberBot4 -= 1;
             let posrandom = Math.round(Math.random() * 2);

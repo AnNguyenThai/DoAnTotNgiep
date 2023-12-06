@@ -534,7 +534,7 @@
     "hand": {
       "__id__": 137
     },
-    "numberBot1": 100,
+    "numberBot1": 80,
     "numberBot2": 80,
     "numberBot3": 80,
     "numberBot4": 80,
@@ -544,7 +544,7 @@
     "youLose": {
       "__id__": 247
     },
-    "numBotall": 341,
+    "numBotall": 321,
     "_id": "b5WPCSx15PuZjnarpT/YRS"
   },
   {
@@ -13088,7 +13088,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 91.16,
+      "width": 80.84,
       "height": 56.4
     },
     "_anchorPoint": {
@@ -13140,8 +13140,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "10000",
-    "_N$string": "10000",
+    "_string": "8000",
+    "_N$string": "8000",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -13404,7 +13404,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 99.75,
+      "width": 91.16,
       "height": 56.4
     },
     "_anchorPoint": {
@@ -13456,8 +13456,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "30000",
-    "_N$string": "30000",
+    "_string": "10000",
+    "_N$string": "10000",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
