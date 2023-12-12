@@ -54,10 +54,29 @@ export default class AudioManager extends cc.Component {
     sounds: ClipAudio[] = [];
 
     lastAudioID: number = -1;
+    @property(cc.Node)
+    musicOn: cc.Node = null;
+    @property(cc.Node)
+    musicOff: cc.Node = null;
+
+    disabledMusic() {
+        this.musicOn.active = true;
+        this.musicOff.active = false;
+        cc.audioEngine.setEffectsVolume(0);
+        cc.audioEngine.setMusicVolume(0);
+    }
+    enabledMusic() {
+        this.musicOn.active = false;
+        this.musicOff.active = true;
+        cc.audioEngine.setEffectsVolume(1); 
+        cc.audioEngine.setMusicVolume(1);
+    }
+
+
 
     onLoad() {
         Singleton.AUDIO_MANAGER = this;
-  
+
     }
 
     audioVolumeChangeCallback(volume) {

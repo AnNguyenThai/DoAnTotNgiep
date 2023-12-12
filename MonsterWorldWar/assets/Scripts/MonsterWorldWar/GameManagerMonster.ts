@@ -29,6 +29,9 @@ export default class GameManagerMonster extends cc.Component {
         Singleton.GAME_MANAGER_MONSTER = this;
         // }
     }
+    protected start(): void {
+        this.score.string = ": " + this.dataScore.score.toString();
+    }
     canInstanceWall = true;
     @property([cc.Prefab])
     listBullet: cc.Prefab[] = [];
@@ -39,6 +42,7 @@ export default class GameManagerMonster extends cc.Component {
     handTUT: cc.Node = null;
     @property(cc.Label)
     score: cc.Label = null;
+    dataScore = JSON.parse(localStorage.getItem("Score"));
     @property(cc.Node)
     tutGun: cc.Node = null;
     // numscore = 1000000;
@@ -51,7 +55,7 @@ export default class GameManagerMonster extends cc.Component {
                     if (element.typeObject == TypePool.Bullet) {
                         // Xóa hết đạn cũ trong pool và thay đạn mới vào
                         Singleton.POOLING_MANAGER.poolMap.get(TypePool.Bullet.toString()).clear();
-                        
+
                         element.prefab = this.listBullet[0];
                     }
                 });

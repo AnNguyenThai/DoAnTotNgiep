@@ -21,6 +21,8 @@ export default class Data extends cc.Component {
         console.log("ClearData");
 
         cc.sys.localStorage.clear();
+        this.setData();
+        Singleton.LOADSCENES.LoadScenes("menu");
     }
 
     setData() {
